@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class indexController extends Controller
 {
     public function indexUser() {
-        return view ('indexUser');
+        $getProducts = DB::table('products')->get();
+        return view('indexUser',[
+            'viewProducts' => $getProducts
+        ]);
     }
     public function indexGuest() {
-        return view ('indexGuest');
+        $getProducts = DB::table('products')->get();
+        return view('indexGuest',[
+            'viewProducts' => $getProducts
+        ]);
     }
 }
