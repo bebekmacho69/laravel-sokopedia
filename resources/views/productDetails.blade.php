@@ -15,7 +15,7 @@
 
 <body>
     <ul class="nav nav-tabs d-xl-flex justify-content-xl-center" id="NavbarDark" style="background: #f4f4f4;margin-top: 0px;padding-top: 5px;padding-bottom: 5px;border-color: rgb(5,255,0);/*border-top: 1px solid rgb(0,128,255);*/border-bottom-style: solid;/*border-bottom-color: rgb(0,127,255);*/">
-        <li class="nav-item"><a class="nav-link" href="indexUser.html" style="color: #04bc00;font-size: 16px;">$okopedia</a></li>
+        <li class="nav-item"><a class="nav-link" href="/indexUser" style="color: #04bc00;font-size: 16px;">$okopedia</a></li>
         <li class="nav-item" style="width: 580px;margin-bottom: 0px;margin-top: 0px;">
             <form class="form-inline mr-auto" target="_self">
                 <div class="form-group"><label for="search-field"><i class="fa fa-search" style="border-color: rgb(0,255,255);color: rgb(146,146,146);"></i></label><input class="form-control search-field" type="search" id="search-field-1" name="search" style="width: 467px;margin-left: 9px;margin-right: 6px;"></div>
@@ -23,8 +23,8 @@
                     class="btn btn-light action-button" role="button" href="#" style="border-style: solid;border-color: #05ff00;">Search</a>
             </form>
         </li>
-        <li class="nav-item" style="margin-right: 5px;margin-left: 5px;"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" onclick="cart.html"><a href="cart.html" style="color: #f4f4f4;">Cart<br></a></button></li>
-        <li class="nav-item" style="margin-right: 5px;margin-left: 5px;"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" onclick="cart.html"><a href="history.html" style="color: #f4f4f4;">History<br></a></button></li>
+        <li class="nav-item" style="margin-right: 5px;margin-left: 5px;"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" onclick="cart.html"><a href="/cart" style="color: #f4f4f4;">Cart<br></a></button></li>
+        <li class="nav-item" style="margin-right: 5px;margin-left: 5px;"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" onclick="cart.html"><a href="/history" style="color: #f4f4f4;">History<br></a></button></li>
         <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color: #04bc00;">Username</a>
             <div class="dropdown-menu"><a class="dropdown-item" href="#">Logout</a></div>
         </li>
