@@ -17,18 +17,20 @@ Route::get('/', function () {
     return redirect('/indexUser');
 });
 
-Route::get('/login', 'loginRegisterController@login');
-
-Route::get('/register', 'loginRegisterController@register');
+Route::get('/index','indexController@index');
 
 Route::get('/indexUser','indexController@indexUser');
 
 Route::get('/indexGuest', 'indexController@indexGuest');
 
-Route::get('/cart','transactionController@transactionCart');
-
-Route::get('/history', 'transactionController@transactionHistory');
-
 Route::get('/historyDetails', 'transactionController@transactionHistoryDetails');
 
 Route::get('/productDetails', 'productController@productDetails');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/cart','transactionController@transactionCart');
+
+Route::get('/history', 'transactionController@transactionHistory');

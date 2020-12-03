@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class indexController extends Controller
 {
+    public function index() {
+        $getProducts = DB::table('products')->get();
+        return view('index',[
+            'viewProducts' => $getProducts
+        ]);
+    }
     public function indexUser() {
         $getProducts = DB::table('products')->get();
         return view('indexUser',[
