@@ -6,26 +6,15 @@
             <div class="container-fluid" style="background: #d9d9d9;width: 520px;margin-top: 0px;">
                 <div class="row" style="background: #e6e6e6;padding-top: 60px;padding-bottom: 60px;border-color: #05ff00;">
                     <div class="col d-xl-flex justify-content-center" style="padding-right: 0px;padding-left: 0px;margin-left: 0px;">
-                        <div class="card align-items-center" style="height: 355px;width: 416px;">
+                        <div class="card align-items-center" style="height: auto;width: 416px;">
                             <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="col">
                                     <h4 style="font-size: 29px;margin-top: 10px;margin-bottom: 10px;color: #04bc00;">Login<br></h4>
                                     <div class="form-group row">
-                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
-
+                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
                                         <div class="col-md-6">
-                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <!-- Email verification -->
-                                        <!-- <div class="col-md-6">
                                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                             @error('email')
@@ -33,7 +22,18 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
+                                        </div>
+                                        
+                                        <!-- <div class="col-md-6">
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                            @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div> -->
+                                        <!-- Email verification -->
                                     </div>
                                     <!-- <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">Username<br><input type="text"></h6> -->
                                     <div class="form-group row">

@@ -6,7 +6,7 @@
             <div class="container-fluid" style="background: #d9d9d9;width: 520px;margin-top: 0px;">
                 <div class="row" style="background: #e6e6e6;padding-top: 60px;padding-bottom: 60px;border-color: #05ff00;">
                     <div class="col d-xl-flex justify-content-center" style="padding-right: 0px;padding-left: 0px;margin-left: 0px;">
-                        <div class="card align-items-center" style="height: 355px;width: 416px;">
+                        <div class="card align-items-center" style="height: auto;width: 416px;">
                             <div class="card-body">
                             <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -46,6 +46,19 @@
                                         <div class="col-md-6">
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                         </div>
+                                    </div>
+                                    <!-- Email address -->
+                                    <div class="form-group row">
+                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                     </div>
                                     <!-- </h6><button class="btn btn-primary" type="button" style="background: #04bc00;">Register</button></div> -->
                                     <div class="form-group row mb-0">
