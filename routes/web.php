@@ -14,21 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/indexUser');
+    return redirect('/index');
 });
 
-Route::get('/login', 'loginRegisterController@login');
-
-Route::get('/register', 'loginRegisterController@register');
+Route::get('/index','indexController@index');
 
 Route::get('/indexUser','indexController@indexUser');
 
 Route::get('/indexGuest', 'indexController@indexGuest');
 
+Route::get('/historyDetails', 'transactionController@transactionHistoryDetails');
+
+Route::get('/productDetails', 'productController@productDetails');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/cart','transactionController@transactionCart');
 
 Route::get('/history', 'transactionController@transactionHistory');
 
-Route::get('/historyDetails', 'transactionController@transactionHistoryDetails');
-
-Route::get('/productDetails', 'productController@productDetails');
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('admin', 'HomeController@adminPanel')->name('admin.view');
+});
