@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('You are logged in!') }} <br>
+                    <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">
+                        <a href="/index" style="color:white;">Catalog</a>
+                    </button>
+
                 </div>
             </div>
         </div>
