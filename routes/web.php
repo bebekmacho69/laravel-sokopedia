@@ -34,3 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cart','transactionController@transactionCart');
 
 Route::get('/history', 'transactionController@transactionHistory');
+
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('admin', 'HomeController@adminPanel')->name('admin.view');
+});
