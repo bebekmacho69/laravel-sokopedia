@@ -10,6 +10,9 @@
                 <div class="card-body">
                   Welcome to admin dashboard
                 </div>
+                <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;">
+                    <a href="/crudPanel" style="color: #f4f4f4;">crudPanel<br></a>
+                </button>
             </div>
         </div>
     </div>

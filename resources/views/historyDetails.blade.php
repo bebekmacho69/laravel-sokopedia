@@ -22,6 +22,4 @@
             <p class="copyright">bebekmacho69 @ 2020</p>
         </footer>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 @endsection

@@ -36,5 +36,5 @@ Route::get('/cart','transactionController@transactionCart');
 Route::get('/history', 'transactionController@transactionHistory');
 
 Route::group(['middleware' => ['admin']], function () {
-    Route::get('admin', 'HomeController@adminPanel')->name('admin.view');
+    Route::get('crudProducts', 'adminController@crudProducts')->name('admin.products'); 
 });

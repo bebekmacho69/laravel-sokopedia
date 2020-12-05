@@ -78,7 +78,28 @@
         @endguest
     </ul>
         <main class="py-4">
-            @yield('content')
+            <div class="row" style="padding-top: 70px;">
+                <div class="col" style="margin-bottom: 100px;">
+                    <div class="container-fluid" style="background: #d9d9d9;">
+                    <div class="row" style="margin-right: 0px;margin-left: 0px;padding-top: 18px;padding-bottom: 18px;">
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-right: 12px;" onclick="cart.html"><a href="/crudUsers" style="color: #f4f4f4;">Users<br></a></button><button class="btn btn-primary" type="button"
+                            style="background: #04bc00;border-style: none;margin-right: 12px;" onclick="cart.html"><a href="/crudProducts" style="color: #f4f4f4;">Products<br></a></button><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 0px;"
+                            onclick="cart.html"><a href="/crudTransactions" style="color: #f4f4f4;margin-right: 12px;">Transactions<br></a></button></div>
+                    <div class="col" style="padding-right: 17px;padding-left: 0px;">
+                        <form class="form-inline mr-auto" target="_self" style="width: 572px;float: right;">
+                            <div class="form-group"><label for="search-field"><i class="fa fa-search" style="border-color: rgb(0,255,255);color: rgb(146,146,146);"></i></label><input class="form-control search-field" type="search" id="search-field-2" name="search" style="width: 467px;margin-left: 9px;margin-right: 6px;"
+                                    placeholder="Item Name"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 0px;padding-left: auto;" onclick="cart.html"><a href="history.html" style="color: #f4f4f4;margin-right: 12px;">Search<br></a></button></div>
+                        </form>
+                    </div>
+                </div>
+                    @yield('content')
+                    <div class="row">
+                    <div class="col" style="padding-bottom: 24px;">
+                        <h4 class="text-left">Insert item</h4><button class="btn btn-primary" type="button" style="height: 32px;padding-top: 0px;padding-bottom: 0px;" data-target="#insertModal" data-toggle="modal">Insert</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
         </main>
     </div>
 </body>

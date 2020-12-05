@@ -20,7 +20,7 @@
                     </button>
                     @if (Auth::user()->is_admin == 1)
                         <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">
-                            <a href="/admin" style="color:white;">Admin panel</a>
+                            <a href="/crudProducts" style="color:white;">Admin panel</a>
                         </button>
                      @endif
 
