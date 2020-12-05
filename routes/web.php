@@ -36,5 +36,14 @@ Route::get('/cart','transactionController@transactionCart');
 Route::get('/history', 'transactionController@transactionHistory');
 
 Route::group(['middleware' => ['admin']], function () {
-    Route::get('crudProducts', 'adminController@crudProducts')->name('admin.products'); 
+    Route::get('listProducts', 'adminController@listProducts')->name('admin.products'); 
+    Route::get('listProducts/{id}/insert/','adminController@insertProduct');
+    Route::get('editProducts','adminController@editProduct');
+    Route::get('editProducts/{id}/edit','adminController@editProduct');
+    Route::get('editProducts/{id}/delete/','adminController@deleteProduct');
+    Route::get('listCategory', 'adminController@listCategory');
+    Route::get('editCategory', 'adminController@editCategory');
+    Route::get('editCategory/{id}/edit', 'adminController@editCategory');
+    Route::get('deleteCategory/{id}/delete', 'adminController@deleteCategory');
 });
+
