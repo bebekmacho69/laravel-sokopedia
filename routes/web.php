@@ -45,7 +45,10 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('editProduct/update/','adminController@updateProduct');
     
     Route::get('listCategory', 'adminController@listCategory');
+    Route::post('listCategory/insert', 'adminController@insertCategory');
+    Route::get('listCategory/delete/{id}', 'adminController@deleteCategory');
+
     Route::get('editCategory/{id}', 'adminController@editCategory');
-    Route::get('deleteCategory/delete/{id}', 'adminController@deleteCategory');
+    Route::post('editCategory/update/', 'adminController@updateCategory');
 });
 

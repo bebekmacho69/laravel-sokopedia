@@ -54,13 +54,11 @@
                 </li>
             @endif
         @else
-            <li class="nav-item" style="margin-right: 5px;margin-left: 5px;"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" onclick="cart.html">
-                <a href="/cart" style="color: #f4f4f4;">{{ __('Cart') }}<br></a></button>
+            <li class="nav-item" style="margin-right: 5px;margin-left: 5px;">
+                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" href="/cart" style="color: #f4f4f4;">{{ __('Cart') }}<br></a>
             </li>
             <li class="nav-item" style="margin-right: 5px;margin-left: 5px;">
-                <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" onclick="cart.html">
-                    <a href="/history" style="color: #f4f4f4;">{{ __('History') }}<br></a>
-                </button>
+                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" href="/history" style="color: #f4f4f4;">{{ __('History') }}<br></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color: #04bc00;">{{ Auth::user()->name }}</a>
@@ -85,13 +83,16 @@
                     <div class="container-fluid" style="background: #d9d9d9;">
                     <div class="row" style="margin-right: 0px;margin-left: 0px;padding-top: 18px;padding-bottom: 18px;">
                     <div class="col" style="padding-right: 0px;padding-left: 0px;">
-                    <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-right: 12px;" onclick="cart.html"><a href="/listProducts" style="color: #f4f4f4;">Products<br></a></button>
-                    <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 0px;"
-                            onclick="cart.html"><a href="/listCategory" style="color: #f4f4f4;margin-right: 12px;">Category<br></a></button></div>
+                        <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 12px;" href="/listProducts" style="color: #f4f4f4;">Products<br></a>
+                        <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 12px;" href="/listCategory" style="color: #f4f4f4;margin-right: 12px;">Category<br></a>
+                    </div>
+
                     <div class="col" style="padding-right: 17px;padding-left: 0px;">
                         <form class="form-inline mr-auto" target="_self" style="width: 572px;float: right;">
                             <div class="form-group"><label for="search-field"><i class="fa fa-search" style="border-color: rgb(0,255,255);color: rgb(146,146,146);"></i></label><input class="form-control search-field" type="search" id="search-field-2" name="search" style="width: 467px;margin-left: 9px;margin-right: 6px;"
-                                    placeholder="Item Name"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 0px;padding-left: auto;" onclick="cart.html"><a href="history.html" style="color: #f4f4f4;margin-right: 12px;">Search<br></a></button></div>
+                                    placeholder="Item Name">
+                                    <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 12px;" href="#" style="color: #f4f4f4;margin-right: 12px;">Search<br></a>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -20,10 +20,30 @@ class adminController extends Controller
         ]);
     }
 
-    public function editCategory()
+    public function insertCategory(Request $request) {
+        DB::table('categories')->insert([
+            'categoryName' => $request->categoryName
+        ]);
+        return redirect('listCategory');
+    }
+
+    public function editCategory($id)
 	{
         // TODO
-        return view ('admin.editCategory');
+        $category = DB::table('categories')->where('categoryID', $id)->get();
+        return view ('admin.editCategory', ['categories' => $category]);
+    }
+    
+    public function updateCategory(Request $request) {
+        DB::table('categories')->where('categoryID', $request->categoryID)->update([
+            'categoryName' => $request->categoryName
+        ]);
+        return redirect('listCategory');
+    }
+
+    public function deleteCategory($id) {
+        DB::table('categories')->where('categoryID', $id)->delete();
+        return redirect('listCategory');
     }
 
     // PRODUCTS
