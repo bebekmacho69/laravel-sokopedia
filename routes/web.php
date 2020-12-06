@@ -36,14 +36,16 @@ Route::get('/cart','transactionController@transactionCart');
 Route::get('/history', 'transactionController@transactionHistory');
 
 Route::group(['middleware' => ['admin']], function () {
-    Route::get('listProducts', 'adminController@listProducts')->name('admin.products'); 
-    Route::get('listProducts/{id}/insert/','adminController@insertProduct');
-    Route::get('editProducts','adminController@editProduct');
-    Route::get('editProducts/{id}/edit','adminController@editProduct');
-    Route::get('editProducts/{id}/delete/','adminController@deleteProduct');
+    Route::get('listProducts', 'adminController@listProducts')->name('admin.products');
+    Route::get('listProducts/delete/{id}/','adminController@deleteProduct');
+    Route::post('listProducts/insert/','adminController@insertProduct');
+
+    // Route::get('editProduct/','adminController@editProductPage');
+    Route::get('editProduct/{id}','adminController@editProduct');
+    Route::post('editProduct/update/','adminController@updateProduct');
+    
     Route::get('listCategory', 'adminController@listCategory');
-    Route::get('editCategory', 'adminController@editCategory');
-    Route::get('editCategory/{id}/edit', 'adminController@editCategory');
-    Route::get('deleteCategory/{id}/delete', 'adminController@deleteCategory');
+    Route::get('editCategory/{id}', 'adminController@editCategory');
+    Route::get('deleteCategory/delete/{id}', 'adminController@deleteCategory');
 });
 

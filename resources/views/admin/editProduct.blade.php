@@ -7,12 +7,16 @@
                     <div class="col" style="padding-bottom: 24px;">
                         <h4 class="text-left">Selected Item</h4>
                         <div class="table-responsive" style="width: 100%;float: left;">
+                        @foreach($products as $p)
+                        <form action="/editProduct/update" method="post">
+                            {{ csrf_field() }}
+                            <!-- hidden id -->
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th style="padding-left: 0px;">Item Name</th>
                                         <th style="padding-left: 0px;">Item Price</th>
-                                        <th style="padding-left: 0px;width: 143px;">Item Description</th>
+                                        <th style="padding-left: 0px;width: 143px;">Item Stock</th>
                                         <th style="padding-left: 0px;">Item Image</th>
                                         <th></th>
                                         <th></th>
@@ -20,19 +24,23 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <input type="hidden" name="productID" value="{{ $p->productID }}"> <br/>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;" name="productName" value="{{ $p->productName }}"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;" name="productPrice" value="{{ $p->productPrice }}"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;" name="productStock" value="{{ $p->productStock }}"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;" name="productImage" value="{{ $p->productImage }}"></td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <div><strong>Description</strong></div>
+                            <div><textarea name="productDescription" style="height: 141px;width: 403px;">{{ $p->productDescription }}</textarea></div>
+                            <button class="btn btn-primary" type="button" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;background: #04bc00;">Update</button></div>
+                            <input type="submit" value="Update">
+                        </form>
+                        @endforeach
                         </div>
                         <div>
-                            <div><strong>Description</strong></div>
-                            <div><textarea style="height: 141px;width: 403px;"></textarea></div><button class="btn btn-primary" type="button" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;background: #04bc00;" data-target="#insertModal"
-                                data-toggle="modal">Update</button></div>
                     </div>
                 </div>
             </div>

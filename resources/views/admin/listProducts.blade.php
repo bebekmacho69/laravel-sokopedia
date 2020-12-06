@@ -28,8 +28,10 @@
                                         <td>{{ $p->productPrice }}</td>
                                         <td>{{ $p->productStock }}</td>
                                         <td>{{ $p->productImage }}</td>
-                                        <td><button class="btn btn-primary" type="button" data-target="#editModal" data-toggle="modal" style="background: #04bc00;">Edit</button><button class="btn btn-primary" type="button" data-target="#deleteModal" data-toggle="modal"
-                                                style="background: #04bc00;">Delete</button></td>
+                                        <td>
+                                            <a class="btn btn-primary" style="background: #04bc00;" href="/editProduct/{{ $p->productID }}">Edit</a>
+                                            <a class="btn btn-primary" style="background: #04bc00;" href="/listProducts/delete/{{ $p->productID }}">Delete</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -41,36 +43,38 @@
                     <div class="col" style="padding-bottom: 24px;">
                         <h4 class="text-left">Insert item</h4>
                         <div class="table-responsive" style="width: 100%;float: left;">
+                        <form action="/listProducts/insert" method="post">
+                            {{ csrf_field() }}
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th style="padding-left: 0px;">Item Name</th>
                                         <th style="padding-left: 0px;">Item Price</th>
-                                        <th style="padding-left: 0px;width: 143px;">Item Description</th>
                                         <th style="padding-left: 0px;">Item Image</th>
+                                        <th style="padding-left: 0px;">Item Stock</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productName" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productPrice" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productImage" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productStock" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div>
+                            <div>
                             <div><strong>Description</strong></div>
-                            <div><textarea style="height: 141px;width: 403px;"></textarea></div><button class="btn btn-primary" type="button" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;background: #04bc00;" data-target="#insertModal"
-                                data-toggle="modal">Insert</button></div>
-                    </div>
+                            <div><textarea name="productDescription" style="height: 141px;width: 403px;"></textarea></div>
+                            <button class="btn btn-primary" type="submit" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;background: #04bc00;">Insert</button></div>
+                            </div>
+                        </form>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
-                @endsection
+ @endsection
 
