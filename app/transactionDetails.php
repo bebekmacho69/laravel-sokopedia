@@ -8,4 +8,12 @@ class transactionDetails extends Model
 {
     protected $table = "transactionDetails";
     protected $fillable = ['transactionID','productID','quantity','description'];
+
+    public function transaction() {
+        return $this->belongsTo('transactions');
+    }
+
+    public function product() {
+        return $this->belongsTo('products');
+    }
 }
