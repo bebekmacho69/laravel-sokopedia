@@ -15,15 +15,10 @@
                     @endif
 
                     {{ __('You are logged in!') }} <br>
-                    <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">
-                        <a href="/index" style="color:white;">Catalog</a>
-                    </button>
+                    <a href="/index" class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">Catalog</a>
                     @if (Auth::user()->is_admin == 1)
-                        <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">
-                            <a href="/listProducts" style="color:white;">Admin panel</a>
-                        </button>
+                        <a href="/listProducts" class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">Admin panel</a>
                      @endif
-
                 </div>
             </div>
         </div>

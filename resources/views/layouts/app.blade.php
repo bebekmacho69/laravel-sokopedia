@@ -13,27 +13,27 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>   
+    <script src="{{ asset('/js/app.js') }}" defer></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>   
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="assets/css/styles.css"> 
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="/assets/css/styles.css"> 
 
 </head>
-<body style="background: url(&quot;assets/img/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:110vh;">
+<body style="background: url(&quot;/assets/img/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:110vh;">
     <div id="app">
     <ul class="nav nav-tabs d-xl-flex justify-content-xl-center" id="NavbarDark" style="background: #f4f4f4;margin-top: 0px;padding-top: 5px;padding-bottom: 5px;border-color: rgb(5,255,0);/*border-top: 1px solid rgb(0,128,255);*/border-bottom-style: solid;/*border-bottom-color: rgb(0,127,255);*/">
         <li class="nav-item"><a class="nav-link" href="/index" style="color: #04bc00;font-size: 16px;">$okopedia</a></li>
@@ -52,13 +52,11 @@
                 </li>
             @endif
         @else
-            <li class="nav-item" style="margin-right: 5px;margin-left: 5px;"><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" onclick="cart.html">
-                <a href="/cart" style="color: #f4f4f4;">{{ __('Cart') }}<br></a></button>
+            <li class="nav-item" style="margin-right: 5px;margin-left: 5px;">
+                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" href="/cart" style="color: #f4f4f4;">{{ __('Cart') }}<br></a>
             </li>
             <li class="nav-item" style="margin-right: 5px;margin-left: 5px;">
-                <button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" onclick="cart.html">
-                    <a href="/history" style="color: #f4f4f4;">{{ __('History') }}<br></a>
-                </button>
+                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" href="/history" style="color: #f4f4f4;">{{ __('History') }}<br></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color: #04bc00;">{{ Auth::user()->name }}</a>

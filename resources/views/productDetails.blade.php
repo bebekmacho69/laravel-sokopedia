@@ -8,12 +8,24 @@
                     <div class="col" style="padding-right: 120px;padding-left: 50px;">
                         <div class="card" style="height: 364px;">
                             <div class="card-body d-xl-flex justify-content-xl-end">
-                                <div class="col"><img class="card-img-top scale-on-hover" src="assets/img/henry%20stickmin.png" alt="Card Image" style="width: 451px;margin-top: 37px;"></div>
+                            @foreach($products as $p)
+                                <div class="col card-img-top scale-on-hover" style="display:flex; align-items:center; justify-content: center;" >
+                                    <img src="/assets/img/{{ $p->productImage }}" alt="Card Image">
+                                </div>
                                 <div class="col">
-                                    <h4 style="font-size: 29px;margin-top: 10px;margin-bottom: 10px;color: rgb(0,128,255);">Item Name<br></h4>
-                                    <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">IDR 5000000<br></h6>
-                                    <p>Description&nbsp;Description&nbsp;Description&nbsp;Description&nbsp;Description&nbsp;<br><br></p>
-                                    <p class="d-xl-flex justify-content-xl-start" style="margin-bottom: 3px;width: 278px;">Quantity<input class="d-xl-flex justify-content-xl-start" type="number" style="width: 102px;height: 30px;margin-left: 10px;"></p><button class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top: 10px;">Add to cart</button></div>
+                                    <form action="/productDetails/post/toCart2" method="post">
+                                    {{ csrf_field() }}
+                                        <h4 style="font-size: 29px;margin-top: 10px;margin-bottom: 10px;color: rgb(0,128,255);">{{ $p->productName }}<br></h4>
+                                        <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">IDR {{ $p->productPrice }}<br></h6>
+                                        <p>{{ $p->productDescription }}<br><br></p>
+                                        <p class="d-xl-flex justify-content-xl-start" style="margin-bottom: 3px;width: 278px;">Quantity
+                                        <input class="d-xl-flex justify-content-xl-start" name="productQuantity" type="number" value="1"style="width: 102px;height: 30px;margin-left: 10px;"></p>
+                                        <input type="hidden" name="productID" value="{{ $p->productID }}"> <br/>
+                                        <input type="hidden" name="productDescription" value="{{ $p->productDescription }}"> <br/>
+                                        <button class="btn btn-primary" style="background: #04bc00;border-style: none;margin-top: 10px;" type="submit">Add to cart</button>
+                                    </form>
+                                </div>
+                            @endforeach
                             </div>
                         </div>
                     </div>

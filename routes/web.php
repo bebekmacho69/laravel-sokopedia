@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return redirect('/index');
 });
@@ -27,7 +29,12 @@ Route::get('/historyDetails', 'transactionController@transactionHistoryDetails')
 
 Route::get('/productDetails', 'productController@productDetails');
 
-Auth::routes();
+Route::get('productDetails/get/{id}', 'productController@productDetails2');
+
+// ADD TO CART
+Route::get('productDetails/toCart', 'productController@toCart');
+// ADD TO CART ALTERNATE
+Route::post('productDetails/post/toCart2', 'productController@toCart2');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
