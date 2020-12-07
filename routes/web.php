@@ -21,26 +21,14 @@ Route::get('/', function () {
 
 Route::get('/index','indexController@index');
 
-Route::get('/indexUser','indexController@indexUser');
-
-Route::get('/indexGuest', 'indexController@indexGuest');
-
-Route::get('/historyDetails', 'transactionController@transactionHistoryDetails');
-
-Route::get('/productDetails', 'productController@productDetails');
-
-Route::get('productDetails/get/{id}', 'productController@productDetails2');
-
-// ADD TO CART
-Route::get('productDetails/toCart', 'productController@toCart');
-// ADD TO CART ALTERNATE
-Route::post('productDetails/post/toCart2', 'productController@toCart2');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/cart','transactionController@transactionCart');
-
-Route::get('/history', 'transactionController@transactionHistory');
+Route::group(['middleware' => ['auth']], function () { 
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('productDetails/get/{id}', 'productController@productDetails2');
+    Route::post('productDetails/post/toCart2', 'productController@toCart2');
+    Route::get('/cart','transactionController@transactionCart');
+    Route::get('/history', 'transactionController@transactionHistory');
+    Route::get('/historyDetails', 'transactionController@transactionHistoryDetails');
+});
 
 Route::group(['middleware' => ['admin']], function () {
     Route::get('listProducts', 'adminController@listProducts')->name('admin.products');

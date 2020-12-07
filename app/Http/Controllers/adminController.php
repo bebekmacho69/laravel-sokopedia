@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\categories;
 use App\products;
 use Redirect,Response;
 
@@ -14,77 +15,70 @@ class adminController extends Controller
     }
 
     public function listCategory() {
-        $thisCategory = DB::table('categories')->get();
+        $thisCategory = categories::all();
         return view ('admin.listCategory', [
-            'categories' => $thisCategory 
+            'categories' => $thisCategory
         ]);
     }
 
     public function insertCategory(Request $request) {
-        DB::table('categories')->insert([
-            'categoryName' => $request->categoryName
-        ]);
+        $categories = new categories;
+        $categories->categoryName = $request->categoryName;
+        $categories->save();
+
         return redirect('listCategory');
     }
 
     public function editCategory($id)
 	{
-        // TODO
-        $category = DB::table('categories')->where('categoryID', $id)->get();
+        $category = categories::where('categoryID', $id)->get();
         return view ('admin.editCategory', ['categories' => $category]);
     }
     
     public function updateCategory(Request $request) {
-        DB::table('categories')->where('categoryID', $request->categoryID)->update([
+        $category = categories::where('categoryID', $request->categoryID)->update([
             'categoryName' => $request->categoryName
         ]);
         return redirect('listCategory');
     }
 
     public function deleteCategory($id) {
-        DB::table('categories')->where('categoryID', $id)->delete();
+        $category = categories::where('categoryID', $id)->delete();
         return redirect('listCategory');
     }
 
-    // PRODUCTS
     public function listProducts() {
-        $thisProducts = DB::table('products')->get();
+        $thisProducts = products::all();
         return view ('admin.listProducts', [
             'products' => $thisProducts 
         ]);
     }
 
     public function insertProduct(Request $request) {
-        DB::table('products')->insert([
-            'productName' => $request->productName,
-            'productPrice' => $request->productPrice,
-            'productDescription' => $request->productDescription,
-            'productImage' => $request->productImage,
-            'productStock' => $request->productStock
-        ]);
+        $product = new products;
+        $product->productName = $request->productName;
+        $product->productPrice = $request->productPrice;
+        $product->productDescription = $request->productDescription;
+        $product->productImage = $request->productImage;
+        $product->productStock = $request->productStock;
+        $product->save();
         return redirect('listProducts');
     }
 
     public function editProduct($id) {
-        $product = DB::table('products')->where('productID', $id)->get();
+        $product = products::where('productID', $id)->get();
         return view('admin.editProduct', [
             'products' => $product
         ]);
     }
     
-    // public function editProductPage()
-	// {
-    //     $product = DB::table('products')->get();
-    //     return view('admin.editProduct',['products' => $product]);
-    // }
-    
     public function deleteProduct($id) {
-        DB::table('products')->where('productID', $id)->delete();
+        $product = products::where('productID', $id)->delete();
         return redirect('listProducts');
     }
 
     public function updateProduct(Request $request) {
-        DB::table('products')->where('productID', $request->productID)->update([
+        $product = products::where('productID', $request->productID)->update([
             'productName' => $request->productName,
             'productPrice' => $request->productPrice,
             'productDescription' => $request->productDescription,
