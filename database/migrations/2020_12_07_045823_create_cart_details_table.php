@@ -20,7 +20,7 @@ class CreateCartDetailsTable extends Migration
             $table->foreign('cartID')->references('cartID')->on('cart');
             $table->foreign('productID')->references('productID')->on('products');
             $table->integer('quantity');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

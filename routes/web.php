@@ -25,7 +25,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('productDetails/get/{id}', 'productController@productDetails2');
     Route::post('productDetails/post/toCart2', 'productController@toCart2');
-    Route::get('/cart','transactionController@transactionCart');
+    Route::get('/cart','transactionController@cart');
+    Route::get('/cart/clear','transactionController@cartClear');
+    Route::get('/cart/checkout','transactionController@checkout');
+    Route::get('/cart/edit/{id}','transactionController@cartEdit');
+    Route::post('/cart/update', 'transactionController@cartUpdate');
+    Route::get('/cart/delete/{id}','transactionController@cartDelete');
     Route::get('/history', 'transactionController@transactionHistory');
     Route::get('/historyDetails', 'transactionController@transactionHistoryDetails');
 });
