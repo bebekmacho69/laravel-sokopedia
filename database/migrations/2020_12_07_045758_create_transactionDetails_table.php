@@ -20,7 +20,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->foreign('transactionID')->references('transactionID')->on('transactions');
             $table->foreign('productID')->references('productID')->on('products');
             $table->integer('quantity');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
