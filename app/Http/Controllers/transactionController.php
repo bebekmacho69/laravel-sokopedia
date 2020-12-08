@@ -12,17 +12,6 @@ use App\transactionDetails;
 
 class transactionController extends Controller
 {
-    public function transactionCart() {
-        return view('cart');
-    }
-
-    public function transactionHistory() {
-        return view('history');
-    }
-    public function transactionHistoryDetails() {
-        return view('historyDetails');
-    }
-
     public function cart() {
         $userID = Auth::user()->id;
         $cart = cart::where('userID',$userID)->first();
@@ -90,17 +79,40 @@ class transactionController extends Controller
         $getTransaction = transactions::where('userID',$userID)->latest()->first();
 
         $userTransactionDetails = new transactionDetails;
-        $cartDetails = cartDetails::where('cartID',$userCart->cartID)->select('productID', 'quantity', 'description')->get();
+        $cartDetails = cartDetails::where('cartID',$userCart->cartID)->select('cartID','productID', 'quantity', 'description')->get();
         foreach($cartDetails as $cD){
-            $cartDetails = cartDetails::where('cartID',$userCart->cartID)->select('productID', 'quantity', 'description')->first();
             $newTransactionDetails = new transactionDetails;
             $newTransactionDetails->transactionID = $getTransaction->transactionID;
-            $newTransactionDetails->productID = $cartDetails->productID;
-            $newTransactionDetails->quantity = $cartDetails->quantity;
-            $newTransactionDetails->description = $cartDetails->description;
+            $newTransactionDetails->productID = $cD->productID;
+            $newTransactionDetails->quantity = $cD->quantity;
+            $newTransactionDetails->description = $cD->description;
             $newTransactionDetails->save();
         }
         $deleteCartDetails = cartDetails::where('cartID',$userCart->cartID)->delete();
         return redirect('index');
+    }
+
+    public function transactionHistory() {
+        $userID = Auth::user()->id;
+        $table = transactions::where('userID',$userID)->get();
+        return view('history', [
+            'transactions' => $table
+        ]);
+    }
+    public function transactionHistoryDetails($id) {
+        // $historyDetail = transactionDetails::where('transactionID',$id)->get();
+        // $cart = DB::table('cart_details')
+        // ->join('products', 'cart_details.productID', '=', 'products.productID')
+        // ->select('cart_details.productID','products.productImage', 'products.productName', 'cart_details.quantity', 'cart_details.description')
+        // ->where('cart_details.productID','=', $id)
+        // ->get();
+        $historyDetail2 = DB::table('transaction_details')
+            ->join('products','transaction_details.productID','=','products.productID')
+            ->where('transaction_details.transactionID','=',$id)
+            ->select('products.productID','products.productName','products.productPrice','products.productImage','transaction_details.quantity','transaction_details.description')
+            ->get();
+        return view('historyDetails',[
+            'transactionDetail' => $historyDetail2
+        ]);
     }
 }

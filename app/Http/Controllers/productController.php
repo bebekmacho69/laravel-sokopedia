@@ -12,16 +12,14 @@ use App\transactionDetails;
 
 class productController extends Controller
 {
-    public function productDetails() {
-        $cart = new cart;
-        $cart->userID = $userID;
-        $cart->save();
-        return view('productDetails');
-    }
-
     public function productDetails2($id) {
         $product = DB::table('products')->where('productID', $id)->get();
         return view('productDetails', ['products' => $product]);
+    }
+
+    public function historyProduct($id) {
+        $product = DB::table('products')->where('productID', $id)->get();
+        return view('productDetails_th', ['products' => $product]);
     }
 
     public function toCart2(Request $request) {

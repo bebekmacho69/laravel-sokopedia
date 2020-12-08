@@ -33,7 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/cart/update', 'transactionController@cartUpdate');
     Route::get('/cart/delete/{id}','transactionController@cartDelete');
     Route::get('/history', 'transactionController@transactionHistory');
-    Route::get('/historyDetails', 'transactionController@transactionHistoryDetails');
+    Route::get('/history/get/{id}', 'transactionController@transactionHistoryDetails');
+    Route::get('/history/getProduct/{id}', 'productController@historyProduct');
 });
 
 Route::group(['middleware' => ['admin']], function () {

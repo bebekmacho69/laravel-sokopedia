@@ -16,22 +16,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($transactions as $t)
                                     <tr>
-                                        <td>Date and time</td>
-                                        <td><button class="btn btn-primary" type="button"><a href="/historyDetails">View</a></button></td>
+                                        <td>{{ $t->created_at }}</td>
+                                        <td>
+                                            <a class="btn btn-primary" type="button" href="/history/get/{{ $t->transactionID }}">View</a>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>Date and time</td>
-                                        <td><button class="btn btn-primary" type="button"><a href="/historyDetails">View</a></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Date and time</td>
-                                        <td><button class="btn btn-primary" type="button"><a href="/historyDetails">View</a></button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Date and time</td>
-                                        <td><button class="btn btn-primary" type="button"><a href="/historyDetails">View</a></button></td>
-                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
