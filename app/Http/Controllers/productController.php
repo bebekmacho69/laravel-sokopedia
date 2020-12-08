@@ -34,7 +34,7 @@ class productController extends Controller
             $cartDetails->cartID = $currCart->cartID;
             $cartDetails->productID = $request->productID;
             $cartDetails->quantity = $request->productQuantity;
-            $cartDetails->description = $request->productDescription;
+            $cartDetails->description = $request->userDescription;
             $cartDetails->save();
         } else 
         if ($currCart_details_product->productID == $request->productID && $currCart_details_product != null) {
