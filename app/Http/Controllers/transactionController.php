@@ -102,10 +102,5 @@ class transactionController extends Controller
         }
         $deleteCartDetails = cartDetails::where('cartID',$userCart->cartID)->delete();
         return redirect('index');
-        // create history(transactions) based on userID
-        // create historyDetails(transactionDetails) based on historyID 
-        // delete current user session cartDetails
-        
-        // historyDetails contains productID, quantity and description
     }
 }
