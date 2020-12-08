@@ -49,6 +49,7 @@
                                         </tbody>
                                     </table>
                                     <a class="btn btn-primary" style="float:right;" type="button" href="cart/checkout/">Checkout</a>
+                                    <a class="btn btn-primary" style="float:right;" type="submit" href="">Checkout</a>
                                     <a class="btn btn-primary" style="float:right;" type="button" href="/cart/clear/">Clear</a>
                                 </div>
                             </div>

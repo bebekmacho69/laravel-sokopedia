@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/cart','transactionController@cart');
     Route::get('/cart/clear','transactionController@cartClear');
     Route::get('/cart/checkout','transactionController@checkout');
+
     Route::get('/cart/edit/{id}','transactionController@cartEdit');
     Route::post('/cart/update', 'transactionController@cartUpdate');
     Route::get('/cart/delete/{id}','transactionController@cartDelete');
