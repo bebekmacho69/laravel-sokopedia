@@ -23,6 +23,7 @@ Route::get('/index','indexController@index');
 
 Route::group(['middleware' => ['auth']], function () { 
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/home/search/','productController@searchProduct');
     Route::get('productDetails/get/{id}', 'productController@productDetails2');
     Route::post('productDetails/post/toCart2', 'productController@toCart2');
     Route::get('/cart','transactionController@cart');

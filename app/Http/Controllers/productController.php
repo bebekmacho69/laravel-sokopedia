@@ -9,9 +9,25 @@ use App\cart;
 use App\cartDetails;
 use App\transaction;
 use App\transactionDetails;
+use App\products;
 
 class productController extends Controller
 {
+    public function searchProduct(Request $request) {
+        $products = products::where([
+            ['productName', '!=', null],
+            [function ($table) use ($request) {
+                if (($term = $request->inputSearch)) {
+                    $table->orWhere('productName','LIKE','%'.$term.'%')->get();
+                }
+            }]
+        ])
+        ->get();
+        return view('indexSearchResult', [
+            'viewProducts' => $products
+        ]);
+    }
+
     public function productDetails2($id) {
         $product = DB::table('products')->where('productID', $id)->get();
         return view('productDetails', ['products' => $product]);
