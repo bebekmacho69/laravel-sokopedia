@@ -14,6 +14,7 @@
                                         <th>Product Name</th>
                                         <th>Product Description</th>
                                         <th>Product Price</th>
+                                        <th>Category</th>
                                         <th>Product Stock</th>
                                         <th>Product Image</th>
                                         <th>Actions</th>
@@ -26,6 +27,7 @@
                                         <td>{{ $p->productName }}</td>
                                         <td>{{ $p->productDescription }}</td>
                                         <td>{{ $p->productPrice }}</td>
+                                        <td>{{ $p->categoryName }}</td>
                                         <td>{{ $p->productStock }}</td>
                                         <td>{{ $p->productImage }}</td>
                                         <td>
@@ -57,6 +59,7 @@
                                         <th style="padding-left: 0px;">Item Price</th>
                                         <th style="padding-left: 0px;">Item Image</th>
                                         <th style="padding-left: 0px;">Item Stock</th>
+                                        <th style="padding-left: 0px;">Item Category</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -67,6 +70,14 @@
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productPrice" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productImage" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productStock" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;">
+                                            <select name="productCategoryID" id="" style="width: 133px; ">
+                                                <option selected value="">Select Category</option>
+                                                @foreach($categories as $c)
+                                                    <option value="{{ $c->categoryID }}">{{ $c->categoryName }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

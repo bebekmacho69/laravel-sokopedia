@@ -9,6 +9,7 @@ use App\cart;
 use App\cartDetails;
 use App\transactions;
 use App\transactionDetails;
+use App\products;
 
 class transactionController extends Controller
 {
@@ -89,6 +90,12 @@ class transactionController extends Controller
             $newTransactionDetails->transactionID = $getTransaction->transactionID;
             $newTransactionDetails->productID = $cD->productID;
             $newTransactionDetails->quantity = $cD->quantity;
+
+            $products = products::where('productID',$cD->productID)->first();
+            $updateProducts = products::where('productID',$cD->productID)->update([
+                'productStock' => $products->productStock-$cD->quantity
+            ]);
+
             $newTransactionDetails->description = $cD->description;
             $newTransactionDetails->save();
         }

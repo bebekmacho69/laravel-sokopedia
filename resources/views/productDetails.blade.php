@@ -16,6 +16,7 @@
                                     <form action="/productDetails/post/toCart2" method="post">
                                     {{ csrf_field() }}
                                         <h4 style="font-size: 29px;margin-top: 10px;margin-bottom: 10px;color: rgb(0,128,255);">{{ $p->productName }}<br></h4>
+                                        <h4 style="font-size: 20px;margin-top: 10px;margin-bottom: 10px;color: rgb(0,128,255);">Type : {{ $p->categoryName }}<br></h4>
                                         <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">IDR {{ $p->productPrice }}<br></h6>
                                         <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">Stock :  {{ $p->productStock }}<br></h6>
                                         <p>{{ $p->productDescription }}<br><br></p>
@@ -26,7 +27,7 @@
                                         </p>
                                         <input type="hidden" name="productID" value="{{ $p->productID }}"> <br/>
                                         <input type="hidden" name="productDescription" value="{{ $p->productDescription }}"> <br/>
-                                        <button class="btn btn-primary" style="margin-top: 10px;" type="submit">Add to cart</button>
+                                        <button class="btn btn-primary" style="background: #04bc00;border-style: none;margin-top: 10px;" type="submit">Add to cart</button>
                                     </form>
                                 </div>
                             @endforeach

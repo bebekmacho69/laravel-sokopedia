@@ -48,9 +48,20 @@ class adminController extends Controller
     }
 
     public function listProducts() {
-        $thisProducts = products::paginate(5);
+        $thisProducts = products::join('categories','products.categoryID','=','categories.categoryID')
+            ->select(
+                'products.productID',
+                'products.productName',
+                'products.productDescription',
+                'products.productPrice',
+                'categories.categoryName',
+                'products.productStock',
+                'products.productImage' )
+            ->paginate(5);
+        $categories = categories::all();
         return view ('admin.listProducts', [
-            'products' => $thisProducts 
+            'products' => $thisProducts,
+            'categories' => $categories
         ]);
     }
 
@@ -61,6 +72,7 @@ class adminController extends Controller
         $product->productDescription = $request->productDescription;
         $product->productImage = $request->productImage;
         $product->productStock = $request->productStock;
+        $product->categoryID = $request->productCategoryID;
         $product->save();
         return redirect('listProducts');
     }

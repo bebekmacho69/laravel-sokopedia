@@ -36,7 +36,17 @@ class productController extends Controller
     }
 
     public function productDetails2($id) {
-        $product = products::where('productID', $id)->get();
+        $product = products::join('categories','products.categoryID','=','categories.categoryID')
+            ->where('products.productID', $id)
+            ->select(
+            'products.productID',
+            'products.productName',
+            'categories.categoryName',
+            'products.productPrice',
+            'products.productStock',
+            'products.productDescription',
+            'products.productImage')
+            ->get();
         return view('productDetails', ['products' => $product]);
     }
 

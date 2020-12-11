@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->integer('productPrice');
             $table->integer('productStock');
             $table->string('productImage');
+            $table->unsignedBigInteger('categoryID');
+            $table->foreign('categoryID')->references('categoryID')->on('categories');
             $table->timestamps();
         });
     }
