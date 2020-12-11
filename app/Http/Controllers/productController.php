@@ -55,7 +55,22 @@ class productController extends Controller
         return view('productDetails_th', ['products' => $product]);
     }
 
+    public function messages()
+    {
+        return [
+            // user:toCart2
+            'productStock.not_in:0' => 'Product is out of stock',
+            'productName.required' => 'Product is invalid/not available',
+            'productQuantity.digits_between:1,1000' => 'Quantity must between 1 and 1000',
+        ];
+    }
+
     public function toCart2(Request $request) {
+        $validated = $request->validate([
+            'productID' => 'required|integer',
+            'productStock' => 'not_in:0',
+            'productQuantity' => 'required|digits_between:1,1000',
+        ]);
         $userID = Auth::user()->id;
         $currCart = cart::where('userID', $userID)->first();
         $currCart_details_product = cartDetails::where('productID', $request->productID)->first();

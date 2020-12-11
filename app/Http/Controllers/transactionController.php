@@ -57,7 +57,18 @@ class transactionController extends Controller
         ]);
     }
 
+    public function messages()
+    {
+        return [
+            // user:cartUpdate
+            'userQuantity.required' => 'Quantity must between 1 to 1000!',
+        ];
+    }
+
     public function cartUpdate(Request $request) {
+        $validated = $request->validate([
+            'userQuantity' => 'integer|required|digits_between:1,1000'
+        ]);
         $cartDetails = cartDetails::where('productID',$request->productID)->update([
             'quantity' => $request->userQuantity,
             'description' => $request->userDescription

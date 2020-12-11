@@ -1,5 +1,14 @@
 @extends('admin.crudPanel')
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                    @endforeach
+        </ul>
+    </div>
+@endif
 <div class="row">
         <div class="col" style="margin-bottom: 100px;">
             <div class="container-fluid" style="background: #d9d9d9;">
@@ -18,6 +27,7 @@
                                         <th style="padding-left: 0px;">Item Price</th>
                                         <th style="padding-left: 0px;width: 143px;">Item Stock</th>
                                         <th style="padding-left: 0px;">Item Image</th>
+                                        <th style="padding-left: 0px;">Item Category</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -29,6 +39,14 @@
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;" name="productPrice" value="{{ $p->productPrice }}"></td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;" name="productStock" value="{{ $p->productStock }}"></td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" style="width: 120px;margin-right: 0px;margin-left: 0px;" name="productImage" value="{{ $p->productImage }}"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;">
+                                            <select name="productCategoryID" id="0" style="width: 133px;" required> 
+                                                <option selected value="{{ $selectedCategory->categoryID }}">Current : {{ $selectedCategory->categoryName }}</option>
+                                                @foreach($categories as $c)
+                                                    <option value="{{ $c->categoryID }}">{{ $c->categoryName }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"></td>
                                     </tr>
                                 </tbody>

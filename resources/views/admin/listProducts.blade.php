@@ -46,6 +46,15 @@
                         {{ $products->links() }}
                     </div>
                 </div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <div class="row">
                     <div class="col" style="padding-bottom: 24px;">
                         <h4 class="text-left">Insert item</h4>
@@ -66,12 +75,12 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productName" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productPrice" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productImage" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productStock" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productName" value="{{ old('productName') }}" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productPrice" value="{{ old('productPrice') }}" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productImage" value="{{ old('productImage') }}" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productStock" value="{{ old('productStock') }}" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;">
-                                            <select name="productCategoryID" id="" style="width: 133px; ">
+                                            <select name="productCategoryID" id="0" style="width: 133px;" required> 
                                                 <option selected value="">Select Category</option>
                                                 @foreach($categories as $c)
                                                     <option value="{{ $c->categoryID }}">{{ $c->categoryName }}</option>
@@ -83,7 +92,7 @@
                             </table>
                             <div>
                             <div><strong>Description</strong></div>
-                            <div><textarea name="productDescription" style="height: 141px;width: 403px;"></textarea></div>
+                            <div><textarea name="productDescription" value="{{ old('productDescription') }}" style="height: 141px;width: 403px;"></textarea></div>
                             <button class="btn btn-primary" type="submit" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;">Insert</button></div>
                             </div>
                         </form>

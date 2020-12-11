@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+@if ($errors->any())
+	<div class="alert alert-danger">
+		<ul>
+			@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="row" style="background: url(&quot;assets/img/FtC_The_Wall_Full_Building.png&quot;) center / cover no-repeat;padding-top: 70px;margin-bottom: 100%;">
         <div class="col" style="margin-bottom: 100px;">
             <div class="container-fluid" style="background: #d9d9d9;">

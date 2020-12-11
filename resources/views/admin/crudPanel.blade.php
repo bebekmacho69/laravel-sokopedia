@@ -90,14 +90,27 @@
                         <a class="btn btn-primary" type="button" style="padding-right: 12px;" href="/listProducts" >Products<br></a>
                         <a class="btn btn-primary" type="button" style="padding-right: 12px;" href="/listCategory" >Category<br></a>
                     </div>
-
                     <div class="col" style="padding-right: 17px;padding-left: 0px;">
-                        <form class="form-inline mr-auto" target="_self" style="width: 572px;float: right;">
-                            <div class="form-group"><label for="search-field"><i class="fa fa-search" style="border-color: rgb(0,255,255);color: rgb(146,146,146);"></i></label><input class="form-control search-field" type="search" id="search-field-2" name="search" style="width: 467px;margin-left: 9px;margin-right: 6px;"
-                                    placeholder="Item Name">
-                                    <a class="btn btn-primary" type="button" style="padding-right: 12px;margin-right: 12px;" href="#">Search<br></a>
+                    @if ($searchType === 'products')
+                        <form action="/listProducts/search" method="post" class="form-inline mr-auto" target="_self" style="width: 572px;float: right;">
+                            @csrf
+                            <div class="form-group"><label for="search-field"><i class="fa fa-search" style="border-color: rgb(0,255,255);color: rgb(146,146,146);"></i></label>
+                                <input name="inputSearch" class="form-control search-field" type="search" id="search-field-2" style="width: 467px;margin-left: 9px;margin-right: 6px;"
+                                    placeholder="Search product">
+                                    <button class="btn btn-primary" type="submit" style="padding-right: 12px;margin-right: 12px;" href="#">Search<br></button>
                             </div>
                         </form>
+                    @endif
+                    @if ($searchType === 'categories')
+                        <form action="/listCategory/search" method="post" class="form-inline mr-auto" target="_self" style="width: 572px;float: right;">
+                            @csrf
+                            <div class="form-group"><label for="search-field"><i class="fa fa-search" style="border-color: rgb(0,255,255);color: rgb(146,146,146);"></i></label>
+                                <input name="inputSearch" class="form-control search-field" type="search" id="search-field-2" style="width: 467px;margin-left: 9px;margin-right: 6px;"
+                                    placeholder="Search categories">
+                                    <button class="btn btn-primary" type="submit" style="padding-right: 12px;margin-right: 12px;" href="#">Search<br></button>
+                            </div>
+                        </form>
+                    @endif
                     </div>
                 </div>
                     @yield('content')

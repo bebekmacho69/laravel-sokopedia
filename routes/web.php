@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['admin']], function () {
     Route::get('listProducts', 'adminController@listProducts')->name('admin.products');
+    Route::post('listProducts/search', 'adminController@searchProduct');
     Route::get('listProducts/delete/{id}/','adminController@deleteProduct');
     Route::post('listProducts/insert/','adminController@insertProduct');
 
@@ -48,6 +49,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('editProduct/update/','adminController@updateProduct');
     
     Route::get('listCategory', 'adminController@listCategory');
+    Route::post('listCategory/search', 'adminController@searchCategory');
     Route::post('listCategory/insert', 'adminController@insertCategory');
     Route::get('listCategory/delete/{id}', 'adminController@deleteCategory');
 

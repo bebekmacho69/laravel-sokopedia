@@ -16,8 +16,27 @@ class adminController extends Controller
 
     public function listCategory() {
         $thisCategory = categories::paginate(5);
+        $searchType = 'categories';
         return view ('admin.listCategory', [
-            'categories' => $thisCategory
+            'categories' => $thisCategory,
+            'searchType' => $searchType
+        ]);
+    }
+
+    public function searchCategory(Request $request) {
+        $searchCategory = categories::where([
+            ['categoryName', '!=', 'null'],
+            [function ($table) use ($request) {
+                if (($term = $request->inputSearch)) {
+                    $table->orwhere('categoryName','LIKE','%'.$term.'%')->get();
+                }
+            }]
+        ])
+        ->paginate(6);
+        $searchType = 'categories';
+        return view ('admin.search_listCategory', [
+            'categories' => $searchCategory,
+            'searchType' => $searchType
         ]);
     }
 
@@ -58,14 +77,42 @@ class adminController extends Controller
                 'products.productStock',
                 'products.productImage' )
             ->paginate(5);
+        $searchType = 'products';
         $categories = categories::all();
         return view ('admin.listProducts', [
             'products' => $thisProducts,
-            'categories' => $categories
+            'categories' => $categories,
+            'searchType' => $searchType
+        ]);
+    }
+
+    public function searchProduct(Request $request) {
+        $searchProducts = products::where([
+            ['productName', '!=', 'null'],
+            [function ($table) use ($request) {
+                if (($term = $request->inputSearch)) {
+                    $table->orwhere('productName','LIKE','%'.$term.'%')->get();
+                }
+            }]
+        ])
+        ->paginate(6);
+        $searchType = 'products';
+        $categories = categories::all();
+        return view ('admin.search_listProducts', [
+            'products' => $searchProducts,
+            'searchType' => $searchType
         ]);
     }
 
     public function insertProduct(Request $request) {
+        $validated = $request->validate([
+            'productName' => 'required|string',
+            'productPrice' => 'integer|required|digits_between:0,500000000',
+            // 'productDescription' => '',
+            'productImage' => 'required',
+            'productStock' => 'integer|required|digits_between:1,1000',
+            'productCategoryID' => 'required|not_in:0'
+        ]);
         $product = new products;
         $product->productName = $request->productName;
         $product->productPrice = $request->productPrice;
@@ -78,9 +125,16 @@ class adminController extends Controller
     }
 
     public function editProduct($id) {
+        $categories = categories::all();
         $product = products::where('productID', $id)->get();
+
+        $selectedProduct = products::where('productID', $id)->first();
+        $selectedCategory = categories::where('categoryID',$selectedProduct->categoryID)->first();
+
         return view('admin.editProduct', [
-            'products' => $product
+            'products' => $product,
+            'categories' => $categories,
+            'selectedCategory' => $selectedCategory
         ]);
     }
     
@@ -89,13 +143,47 @@ class adminController extends Controller
         return redirect('listProducts');
     }
 
+    public function messages()
+    {
+        return [
+            // admin:insertProduct
+            'productName.required' => 'A product name is required!',
+            'productName.string' => 'Product name must be a string!',
+            'productPrice.required' => 'Price cannot be empty!',
+            'productPrice.digits_between:0,500000000' => 'Price must between 0 and 500.000.000',
+            'productImage.required' => 'Image link must be filled!',
+            'productStock.required' => 'Stock must be filled!',
+            'productStock.digits_between:1,1000' => 'Stock must between 1 and 1000',
+            'productCategoryID.required' => 'Category must be selected!',
+
+            // admin:updateProduct
+            'productName.required' => 'A product name is required!',
+            'productName.string' => 'Product name must be a string!',
+            'productPrice.required' => 'Price cannot be empty!',
+            'productPrice.digits_between:0,500000000' => 'Price must between 0 and 500.000.000',
+            'productImage.required' => 'Image link must be filled!',
+            'productStock.required' => 'Stock must be filled!',
+            'productStock.digits_between:1,1000' => 'Stock must between 1 and 1000',
+            'productCategoryID.required' => 'Category must be selected!' // needs workaround 
+        ];
+    }
+
     public function updateProduct(Request $request) {
+        $validated = $request->validate([
+            'productName' => 'required|string',
+            'productPrice' => 'integer|required|digits_between:0,500000000',
+            // 'productDescription' => '',
+            'productImage' => 'required',
+            'productStock' => 'integer|required|digits_between:1,1000',
+            'productCategoryID' => 'required|not_in:0'
+        ]);
         $product = products::where('productID', $request->productID)->update([
             'productName' => $request->productName,
             'productPrice' => $request->productPrice,
             'productDescription' => $request->productDescription,
             'productImage' => $request->productImage,
-            'productStock' => $request->productStock
+            'productStock' => $request->productStock,
+            'categoryID' => $request->productCategoryID
         ]);
         return redirect('listProducts');
     }
