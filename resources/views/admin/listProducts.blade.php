@@ -1,7 +1,7 @@
 @extends('admin.crudPanel')
     @section('content')
-    <div class="row">
-        <div class="col" style="margin-bottom: 100px;">
+    <div class="row" style="margin-bottom: 100px;">
+        <div class="col">
             <div class="container-fluid" style="background: #d9d9d9;">
                 <div class="row" style="background: #e6e6e6;padding-top: 0px;padding-bottom: 0px;border-color: #05ff00;">
                     <div class="col">
@@ -29,14 +29,19 @@
                                         <td>{{ $p->productStock }}</td>
                                         <td>{{ $p->productImage }}</td>
                                         <td>
-                                            <a class="btn btn-primary" style="background: #04bc00;" href="/editProduct/{{ $p->productID }}">Edit</a>
-                                            <a class="btn btn-primary" style="background: #04bc00;" href="/listProducts/delete/{{ $p->productID }}">Delete</a>
+                                            <a class="btn btn-primary" style="margin : 2%;" href="/editProduct/{{ $p->productID }}">Edit</a>
+                                            <a class="btn btn-primary" style="margin : 2%;" href="/listProducts/delete/{{ $p->productID }}">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+                <div class="d-xl-flex justify-content-xl-center" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="btn-group d-xl-flex justify-content-xl-center" role="group" style="width: 186px;">
+                        {{ $products->links() }}
                     </div>
                 </div>
                 <div class="row">
@@ -68,7 +73,7 @@
                             <div>
                             <div><strong>Description</strong></div>
                             <div><textarea name="productDescription" style="height: 141px;width: 403px;"></textarea></div>
-                            <button class="btn btn-primary" type="submit" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;background: #04bc00;">Insert</button></div>
+                            <button class="btn btn-primary" type="submit" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;">Insert</button></div>
                             </div>
                         </form>
                         </div>

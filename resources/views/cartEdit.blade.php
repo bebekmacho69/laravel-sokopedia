@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row" style="background: url(&quot;assets/img/FtC_The_Wall_Full_Building.png&quot;) center / cover no-repeat;padding-top: 70px;">
+    <div class="row" style="background: url(&quot;assets/img/FtC_The_Wall_Full_Building.png&quot;) center / cover no-repeat;padding-top: 70px;margin-bottom: 100%;">
         <div class="col" style="margin-bottom: 100px;">
             <div class="container-fluid" style="background: #d9d9d9;">
                 <div class="row" style="background: #e6e6e6;padding-top: 60px;padding-bottom: 60px;border-color: #05ff00;">
@@ -41,7 +41,7 @@
                                                     </td>
                                                     <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;">
                                                     <input type="hidden" name="productID" value="{{ $p->productID }}">
-                                                    <input class="btn btn-primary" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px; margin-bottom:25px;background: #04bc00;" type="submit" value="Update">       
+                                                    <input class="btn btn-primary" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px; margin-bottom:25px;" type="submit" value="Update">       
                                                     </td>
                                                 </tr>
                                             </tbody>

@@ -15,22 +15,27 @@ class transactionController extends Controller
     public function cart() {
         $userID = Auth::user()->id;
         $cart = cart::where('userID',$userID)->first();
-        $product = DB::table('cart_details')->where('cartID', $cart->cartID)
+        $sum = 0;
+        $product = cartDetails::where('cartID', $cart->cartID)
             ->join('products', 'cart_details.productID', '=', 'products.productID')
             ->select('cart_details.description','cart_details.productID', 'cart_details.cartID','products.productImage','products.productName','products.productPrice','products.productDescription','cart_details.quantity')
-            ->get();
+            ->paginate(5);
+        foreach($product as $p) {
+            $sum += $p->productPrice*$p->quantity;
+        }
         return view('cart',[
-            'product' => $product
+            'product' => $product,
+            'sum' => $sum
         ]);
     }
 
     public function cartDelete($id) {
-        $table = DB::table('cart_details')->where('productID',$id)->delete();
+        $table = cartDetails::where('productID',$id)->delete();
         return redirect('cart');
     }
 
     public function cartEditPage() {
-        $cart = DB::table('cart_details')->join('products', 'cart_details.productID', '=', 'products.productID')
+        $cart = cartDetails::join('products', 'cart_details.productID', '=', 'products.productID')
             ->select('products.productImage', 'products.productName', 'cart_details.quantity', 'cart_details.description')
             ->get();
         return view ('cartEdit', [
@@ -40,8 +45,7 @@ class transactionController extends Controller
 
     public function cartEdit($id) {
         $item = cartDetails::where('productID', $id)->get();
-        $cart = DB::table('cart_details')
-            ->join('products', 'cart_details.productID', '=', 'products.productID')
+        $cart = cartDetails::join('products', 'cart_details.productID', '=', 'products.productID')
             ->select('cart_details.productID','products.productImage', 'products.productName', 'cart_details.quantity', 'cart_details.description')
             ->where('cart_details.productID','=', $id)
             ->get();
@@ -94,25 +98,25 @@ class transactionController extends Controller
 
     public function transactionHistory() {
         $userID = Auth::user()->id;
-        $table = transactions::where('userID',$userID)->get();
+        $table = transactions::where('userID',$userID)->paginate(5);
         return view('history', [
             'transactions' => $table
         ]);
     }
     public function transactionHistoryDetails($id) {
-        // $historyDetail = transactionDetails::where('transactionID',$id)->get();
-        // $cart = DB::table('cart_details')
-        // ->join('products', 'cart_details.productID', '=', 'products.productID')
-        // ->select('cart_details.productID','products.productImage', 'products.productName', 'cart_details.quantity', 'cart_details.description')
-        // ->where('cart_details.productID','=', $id)
-        // ->get();
-        $historyDetail2 = DB::table('transaction_details')
-            ->join('products','transaction_details.productID','=','products.productID')
+        $historyDetail2 = transactionDetails::join('products','transaction_details.productID','=','products.productID')
             ->where('transaction_details.transactionID','=',$id)
             ->select('products.productID','products.productName','products.productPrice','products.productImage','transaction_details.quantity','transaction_details.description')
-            ->get();
+            ->paginate(6);
+        $transaction = transactions::where('transactionID',$id)->get();
+        $sum = 0;
+        foreach($historyDetail2 as $hD) {
+            $sum += $hD->productPrice*$hD->quantity;
+        }
         return view('historyDetails',[
-            'transactionDetail' => $historyDetail2
+            'transactionDetail' => $historyDetail2,
+            'transaction' => $transaction,
+            'totalPrice' => $sum
         ]);
     }
 }

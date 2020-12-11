@@ -17,14 +17,19 @@
                                         <td>{{ $c->categoryID }}</td>
                                         <td>{{ $c->categoryName }}</td>
                                         <td>
-                                            <a class="btn btn-primary" type="button" style="background: #04bc00;" href="/editCategory/{{ $c->categoryID }}">Edit</a>
-                                            <a class="btn btn-primary" type="button" style="background: #04bc00;" href="/listCategory/delete/{{ $c->categoryID }}">Delete</a>
+                                            <a class="btn btn-primary" type="button" href="/editCategory/{{ $c->categoryID }}">Edit</a>
+                                            <a class="btn btn-primary" type="button" href="/listCategory/delete/{{ $c->categoryID }}">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+                <div class="d-xl-flex justify-content-xl-center" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="btn-group d-xl-flex justify-content-xl-center" role="group" style="width: 186px;">
+                        {{ $categories->links() }}
                     </div>
                 </div>
                 <div class="row">
@@ -49,7 +54,7 @@
                                 </tbody>
                             </table>
                         </div>
-                            <input class="btn btn-primary" type="submit" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;background: #04bc00;" value="Insert">
+                            <input class="btn btn-primary" type="submit" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;" value="Insert">
                         </form>
                     </div>
                 </div>

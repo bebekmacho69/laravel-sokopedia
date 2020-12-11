@@ -27,13 +27,18 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="/assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="/assets/css/styles.css"> 
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/nav-sokopedia.css">
+    <link rel="stylesheet" href="/assets/css/navsearch-sokopedia.css">
+    
+
+    <!-- overriding styles -->
+    <!-- taken from bootstrap-button-default.css -->
+    <link rel="stylesheet" href="/assets/css/override.css">
+
 
 </head>
-<body style="background: url(&quot;/assets/img/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:110vh;">
+<body style="background: url(&quot;/assets/img/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:100%; background-attachment: fixed;">
     <div id="app">
     <ul class="nav nav-tabs d-xl-flex justify-content-xl-center" id="NavbarDark" style="background: #f4f4f4;margin-top: 0px;padding-top: 5px;padding-bottom: 5px;border-color: rgb(5,255,0);/*border-top: 1px solid rgb(0,128,255);*/border-bottom-style: solid;/*border-bottom-color: rgb(0,127,255);*/">
         <li class="nav-item"><a class="nav-link" href="/index" style="color: #04bc00;font-size: 16px;">$okopedia</a></li>
@@ -46,7 +51,7 @@
                     </label>
                     <input class="form-control search-field" type="search" id="search-field-1" name="inputSearch" style="width: 467px;margin-left: 9px;margin-right: 6px;">
                 </div>
-                <input class="btn btn-light action-button" role="button" type="submit" style="border-style: solid;border-color: #05ff00;" value="Search">
+                <input class="btn btn-light action-button" role="button" type="submit" value="Search">
             </form>
         </li>
         @guest
@@ -58,10 +63,10 @@
             @endif
         @else
             <li class="nav-item" style="margin-right: 5px;margin-left: 5px;">
-                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" href="/cart" style="color: #f4f4f4;">{{ __('Cart') }}<br></a>
+                <a class="btn btn-primary" type="button" href="/cart">{{ __('Cart') }}<br></a>
             </li>
             <li class="nav-item" style="margin-right: 5px;margin-left: 5px;">
-                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" href="/history" style="color: #f4f4f4;">{{ __('History') }}<br></a>
+                <a class="btn btn-primary" type="button" href="/history">{{ __('History') }}<br></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color: #04bc00;">{{ Auth::user()->name }}</a>

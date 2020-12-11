@@ -35,7 +35,7 @@
                             </table>
                             <div><strong>Description</strong></div>
                             <div><textarea name="productDescription" style="height: 141px;width: 403px;">{{ $p->productDescription }}</textarea></div>
-                            <input class="btn btn-primary" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;background: #04bc00;" type="submit" value="Update">
+                            <input class="btn btn-primary" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;" type="submit" value="Update">
                         </form>
                         @endforeach
                         </div>

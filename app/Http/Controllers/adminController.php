@@ -15,7 +15,7 @@ class adminController extends Controller
     }
 
     public function listCategory() {
-        $thisCategory = categories::all();
+        $thisCategory = categories::paginate(5);
         return view ('admin.listCategory', [
             'categories' => $thisCategory
         ]);
@@ -48,7 +48,7 @@ class adminController extends Controller
     }
 
     public function listProducts() {
-        $thisProducts = products::all();
+        $thisProducts = products::paginate(5);
         return view ('admin.listProducts', [
             'products' => $thisProducts 
         ]);

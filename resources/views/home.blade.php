@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-bottom:100%;">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
@@ -15,11 +15,10 @@
                     @endif
 
                     {{ __('You are logged in!') }} <br>
-                    <a href="/index" class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">Catalog</a>
+                    <a href="/index" class="btn btn-primary" type="button" style="margin-top:10px;">Catalog</a>
                     @if (Auth::user()->is_admin == 1)
-                        <a href="/listProducts" class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">Admin panel</a>
+                        <a href="/listProducts" class="btn btn-primary" type="button" style="margin-top:10px;">Admin panel</a>
                      @endif
-
                 </div>
             </div>
         </div>

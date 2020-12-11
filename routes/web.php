@@ -19,7 +19,7 @@ Route::get('/', function () {
     return redirect('/index');
 });
 
-Route::get('/index','indexController@index');
+Route::get('/index','productController@viewProduct');
 
 Route::group(['middleware' => ['auth']], function () { 
     Route::get('/home', 'HomeController@index')->name('home');

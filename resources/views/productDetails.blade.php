@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row" style="background: url(&quot;assets/img/FtC_The_Wall_Full_Building.png&quot;) center / cover no-repeat;padding-top: 70px;">
+    <div class="row" style="background: url(&quot;assets/img/FtC_The_Wall_Full_Building.png&quot;) center / cover no-repeat;padding-top: 70px;margin-bottom: 100%;">
         <div class="col" style="margin-bottom: 100px;">
             <div class="container-fluid" style="background: #d9d9d9;">
                 <div class="row" style="background: #e6e6e6;padding-top: 60px;padding-bottom: 60px;border-color: #05ff00;">
@@ -17,6 +17,7 @@
                                     {{ csrf_field() }}
                                         <h4 style="font-size: 29px;margin-top: 10px;margin-bottom: 10px;color: rgb(0,128,255);">{{ $p->productName }}<br></h4>
                                         <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">IDR {{ $p->productPrice }}<br></h6>
+                                        <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">Stock :  {{ $p->productStock }}<br></h6>
                                         <p>{{ $p->productDescription }}<br><br></p>
                                         Notes <br>
                                         <textarea name="userDescription" style="height: 141px;width: 403px;"></textarea>
@@ -25,7 +26,7 @@
                                         </p>
                                         <input type="hidden" name="productID" value="{{ $p->productID }}"> <br/>
                                         <input type="hidden" name="productDescription" value="{{ $p->productDescription }}"> <br/>
-                                        <button class="btn btn-primary" style="background: #04bc00;border-style: none;margin-top: 10px;" type="submit">Add to cart</button>
+                                        <button class="btn btn-primary" style="margin-top: 10px;" type="submit">Add to cart</button>
                                     </form>
                                 </div>
                             @endforeach

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row" style="background: url(&quot;assets/img/FtC_The_Wall_Full_Building.png&quot;) center / cover no-repeat;padding-top: 70px;">
+    <div class="row" style="background: url(&quot;assets/img/FtC_The_Wall_Full_Building.png&quot;) center / cover no-repeat;padding-top: 70px;margin-bottom: 100%;">
         <div class="col" style="margin-bottom: 100px;">
             <div class="container-fluid" style="background: #d9d9d9;">
                 <div class="row" style="background: #e6e6e6;padding-top: 60px;padding-bottom: 60px;border-color: #05ff00;">
@@ -17,7 +17,7 @@
                                         <h4 style="font-size: 29px;margin-top: 10px;margin-bottom: 10px;color: rgb(0,128,255);">{{ $p->productName }}<br></h4>
                                         <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">IDR {{ $p->productPrice }}<br></h6>
                                         <p>{{ $p->productDescription }}<br><br></p>
-                                        <a class="btn btn-primary" style="background: #04bc00;border-style: none;margin-top: 10px;" type="button" href="/productDetails/get/{{ $p->productID }}">View real product</a>
+                                        <a class="btn btn-primary" style="border-style: none;margin-top: 10px;" type="button" href="/productDetails/get/{{ $p->productID }}">View retail product</a>
                                 </div>
                             @endforeach
                             </div>

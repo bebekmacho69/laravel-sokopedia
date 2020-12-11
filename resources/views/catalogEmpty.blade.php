@@ -1,5 +1,5 @@
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" style="margin-bottom: 100px;">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
@@ -10,13 +10,13 @@
                             please come back later :) <br>
                         @guest
                             @if(Route::has('register'))
-                                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;" href="/login" style="color: #04bc00;">Login</a>
+                                <a class="btn btn-primary" type="button" style="margin-top:10px;" href="/login" style="color: #04bc00;">Login</a>
                             @endif
                         @else
                             <a onclick="event.preventDefault(); 
                                 document.getElementById('logout-form').submit();" 
                                 href="{{ route('logout') }}" 
-                                class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;margin-top:10px;">Logout</a>
+                                class="btn btn-primary" type="button" style="margin-top:10px;">Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>

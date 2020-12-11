@@ -27,15 +27,19 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="/assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="/assets/css/styles.css"> 
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/nav-sokopedia.css">
+    <link rel="stylesheet" href="/assets/css/navsearch-sokopedia.css">
+    
+
+    <!-- overriding styles -->
+    <!-- taken from bootstrap-button-default.css -->
+    <link rel="stylesheet" href="/assets/css/override.css">
 
 
 
 </head>
-<body style="background: url(&quot;/assets/img/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:110vh;">
+<body style="background: url(&quot;/assets/img/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:110vh; background-attachment:fixed;">
     <div id="app">
     <ul class="nav nav-tabs d-xl-flex justify-content-xl-center" id="NavbarDark" style="background: #f4f4f4;margin-top: 0px;padding-top: 5px;padding-bottom: 5px;border-color: rgb(5,255,0);/*border-top: 1px solid rgb(0,128,255);*/border-bottom-style: solid;/*border-bottom-color: rgb(0,127,255);*/">
         <li class="nav-item"><a class="nav-link" href="/index" style="color: #04bc00;font-size: 16px;">$okopedia</a></li>
@@ -43,7 +47,7 @@
             <form class="form-inline mr-auto" target="_self">
                 <div class="form-group"><label for="search-field"><i class="fa fa-search" style="border-color: rgb(0,255,255);color: rgb(146,146,146);"></i></label><input class="form-control search-field" type="search" id="search-field-1" name="search" style="width: 467px;margin-left: 9px;margin-right: 6px;"></div>
                 <a
-                    class="btn btn-light action-button" role="button" href="#" style="border-style: solid;border-color: #05ff00;">Search</a>
+                    class="btn btn-light action-button" role="button" href="#">Search</a>
             </form>
         </li>
         @guest
@@ -55,10 +59,10 @@
             @endif
         @else
             <li class="nav-item" style="margin-right: 5px;margin-left: 5px;">
-                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" href="/cart" style="color: #f4f4f4;">{{ __('Cart') }}<br></a>
+                <a class="btn btn-primary" type="button" href="/cart" style="color: #f4f4f4;">{{ __('Cart') }}<br></a>
             </li>
             <li class="nav-item" style="margin-right: 5px;margin-left: 5px;">
-                <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;" href="/history" style="color: #f4f4f4;">{{ __('History') }}<br></a>
+                <a class="btn btn-primary" type="button" href="/history" style="color: #f4f4f4;">{{ __('History') }}<br></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color: #04bc00;">{{ Auth::user()->name }}</a>
@@ -83,15 +87,15 @@
                     <div class="container-fluid" style="background: #d9d9d9;">
                     <div class="row" style="margin-right: 0px;margin-left: 0px;padding-top: 18px;padding-bottom: 18px;">
                     <div class="col" style="padding-right: 0px;padding-left: 0px;">
-                        <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 12px;" href="/listProducts" style="color: #f4f4f4;">Products<br></a>
-                        <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 12px;" href="/listCategory" style="color: #f4f4f4;margin-right: 12px;">Category<br></a>
+                        <a class="btn btn-primary" type="button" style="padding-right: 12px;" href="/listProducts" >Products<br></a>
+                        <a class="btn btn-primary" type="button" style="padding-right: 12px;" href="/listCategory" >Category<br></a>
                     </div>
 
                     <div class="col" style="padding-right: 17px;padding-left: 0px;">
                         <form class="form-inline mr-auto" target="_self" style="width: 572px;float: right;">
                             <div class="form-group"><label for="search-field"><i class="fa fa-search" style="border-color: rgb(0,255,255);color: rgb(146,146,146);"></i></label><input class="form-control search-field" type="search" id="search-field-2" name="search" style="width: 467px;margin-left: 9px;margin-right: 6px;"
                                     placeholder="Item Name">
-                                    <a class="btn btn-primary" type="button" style="background: #04bc00;border-style: none;padding-right: 12px;" href="#" style="color: #f4f4f4;margin-right: 12px;">Search<br></a>
+                                    <a class="btn btn-primary" type="button" style="padding-right: 12px;margin-right: 12px;" href="#">Search<br></a>
                             </div>
                         </form>
                     </div>

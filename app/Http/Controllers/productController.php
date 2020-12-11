@@ -13,6 +13,13 @@ use App\products;
 
 class productController extends Controller
 {
+    public function viewProduct() {
+        $getProducts = products::paginate(6);
+        return view('index',[
+            'viewProducts' => $getProducts
+        ]);
+    }
+
     public function searchProduct(Request $request) {
         $products = products::where([
             ['productName', '!=', null],
@@ -22,19 +29,19 @@ class productController extends Controller
                 }
             }]
         ])
-        ->get();
+        ->paginate(6);
         return view('indexSearchResult', [
             'viewProducts' => $products
         ]);
     }
 
     public function productDetails2($id) {
-        $product = DB::table('products')->where('productID', $id)->get();
+        $product = products::where('productID', $id)->get();
         return view('productDetails', ['products' => $product]);
     }
 
     public function historyProduct($id) {
-        $product = DB::table('products')->where('productID', $id)->get();
+        $product = products::where('productID', $id)->get();
         return view('productDetails_th', ['products' => $product]);
     }
 

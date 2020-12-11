@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row" style="padding-top: 70px;">
+    <div class="row" style="padding-top: 70px; margin-bottom:100%;">
         <div class="col" style="margin-bottom: 100px;">
             <div class="container-fluid" style="background: #d9d9d9;">
                 <h1 style="text-align: center;">Transaction History</h1>
@@ -29,16 +29,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="d-xl-flex justify-content-xl-center" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="btn-group d-xl-flex justify-content-xl-center" role="group" style="width: 186px;">
+						{{ $transactions->links() }}
+					</div>
+				</div>
             </div>
         </div>
-    </div>
-    <div class="footer-basic" style="background: rgb(35,35,35);border-color: #05ff00;border-top-style: solid;">
-        <footer>
-            <ul class="list-inline">
-                <li class="list-inline-item"></li>
-                <li class="list-inline-item"></li>
-            </ul>
-            <p class="copyright">bebekmacho69 @ 2020</p>
-        </footer>
     </div>
 @endsection

@@ -1,6 +1,6 @@
 @extends('admin.crudPanel')
 @section('content')
-<div class="row">
+<div class="row" >
         <div class="col" style="margin-bottom: 100px;">
             <div class="container-fluid" style="background: #d9d9d9;">
                 <div class="row">
@@ -33,7 +33,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <input class="btn btn-primary" type="submit" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;background: #04bc00;" value="Update">                            
+                            <input class="btn btn-primary" type="submit" style="height: 32px;padding-top: 0px;padding-bottom: 0px;margin-left: 0px;" value="Update">                            
                         </form>
                         @endforeach
                         </div>
