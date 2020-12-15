@@ -63,8 +63,10 @@
                                     </div>
                                     <div style="float:right;"> 
                                         Total : IDR {{ $sum }} <br>
+                                        @if(count($product) > 0)
                                         <a class="btn btn-primary" style="float:right; margin-left : 1px;" type="button" href="/cart/checkout/">Checkout</a>
                                         <a class="btn btn-primary" style="float:right; background-color : red;" type="button" href="/cart/clear/">Clear</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

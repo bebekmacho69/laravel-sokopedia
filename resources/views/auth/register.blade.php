@@ -39,7 +39,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <!-- <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">Repeat Password<br><input type="password"> -->
+                                    <!-- <h6 class="text-muted mb-2" style="font-size: 23px;margin-top: 10px;margin-bottom: 10px;">Repeat Password<br><input type="password"> </h6>-->
                                     <div class="form-group row">
                                         <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -53,23 +53,24 @@
 
                                         <div class="col-md-6">
                                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                    </div>
-                                    <!-- </h6><button class="btn btn-primary" type="button" style="background: #04bc00;">Register</button></div> -->
-                                    <div class="form-group row mb-0">
-                                        <div class="col-md-6 offset-md-4">
-                                            <button type="submit" class="btn btn-primary" style="background: #04bc00;">
-                                                {{ __('Register') }}
-                                            </button>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right"></label>
+
+                                        <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary" style="background: #04bc00;">
+                                            {{ __('Register') }}
+                                        </button>
+                                        </div>
+                                    </div>
                             </form>
+                            </div>
                         </div>
                     </div>
                 </div>

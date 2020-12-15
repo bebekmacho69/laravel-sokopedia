@@ -44,7 +44,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('listProducts/delete/{id}/','adminController@deleteProduct');
     Route::post('listProducts/insert/','adminController@insertProduct');
 
-    // Route::get('editProduct/','adminController@editProductPage');
     Route::get('editProduct/{id}','adminController@editProduct');
     Route::post('editProduct/update/','adminController@updateProduct');
     

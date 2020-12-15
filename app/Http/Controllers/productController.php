@@ -14,7 +14,7 @@ use App\products;
 class productController extends Controller
 {
     public function viewProduct() {
-        $getProducts = products::paginate(6);
+        $getProducts = products::paginate(3);
         return view('index',[
             'viewProducts' => $getProducts
         ]);
@@ -29,7 +29,7 @@ class productController extends Controller
                 }
             }]
         ])
-        ->paginate(6);
+        ->paginate(3);
         return view('indexSearchResult', [
             'viewProducts' => $products
         ]);

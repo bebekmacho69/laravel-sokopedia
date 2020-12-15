@@ -41,6 +41,9 @@ class adminController extends Controller
     }
 
     public function insertCategory(Request $request) {
+        $validated = $request->validate([
+            'categoryName' => 'required|string|unique:categories'
+        ]);
         $categories = new categories;
         $categories->categoryName = $request->categoryName;
         $categories->save();
@@ -50,8 +53,12 @@ class adminController extends Controller
 
     public function editCategory($id)
 	{
+        $searchType = 'none';
         $category = categories::where('categoryID', $id)->get();
-        return view ('admin.editCategory', ['categories' => $category]);
+        return view ('admin.editCategory', [
+            'categories' => $category,
+            'searchType' => $searchType
+            ]);
     }
     
     public function updateCategory(Request $request) {
@@ -106,18 +113,21 @@ class adminController extends Controller
 
     public function insertProduct(Request $request) {
         $validated = $request->validate([
-            'productName' => 'required|string',
-            'productPrice' => 'integer|required|digits_between:0,500000000',
-            // 'productDescription' => '',
-            'productImage' => 'required',
+            'productName' => 'required|string|unique:products',
+            'productPrice' => 'integer|required|digits_between:100,500000000',
+            'productImage' => 'file|required|image|mimes:jpeg,png,jpg|max:5120',
             'productStock' => 'integer|required|digits_between:1,1000',
             'productCategoryID' => 'required|not_in:0'
         ]);
+
+        $img = $request->file('productImage');
+        $img->move('assets/img',$img->getClientOriginalName());
+
         $product = new products;
         $product->productName = $request->productName;
         $product->productPrice = $request->productPrice;
         $product->productDescription = $request->productDescription;
-        $product->productImage = $request->productImage;
+        $product->productImage = $img->getClientOriginalName();
         $product->productStock = $request->productStock;
         $product->categoryID = $request->productCategoryID;
         $product->save();
@@ -126,6 +136,7 @@ class adminController extends Controller
 
     public function editProduct($id) {
         $categories = categories::all();
+        $searchType = 'none';
         $product = products::where('productID', $id)->get();
 
         $selectedProduct = products::where('productID', $id)->first();
@@ -134,38 +145,14 @@ class adminController extends Controller
         return view('admin.editProduct', [
             'products' => $product,
             'categories' => $categories,
-            'selectedCategory' => $selectedCategory
+            'selectedCategory' => $selectedCategory,
+            'searchType' => $searchType
         ]);
     }
     
     public function deleteProduct($id) {
         $product = products::where('productID', $id)->delete();
         return redirect('listProducts');
-    }
-
-    public function messages()
-    {
-        return [
-            // admin:insertProduct
-            'productName.required' => 'A product name is required!',
-            'productName.string' => 'Product name must be a string!',
-            'productPrice.required' => 'Price cannot be empty!',
-            'productPrice.digits_between:0,500000000' => 'Price must between 0 and 500.000.000',
-            'productImage.required' => 'Image link must be filled!',
-            'productStock.required' => 'Stock must be filled!',
-            'productStock.digits_between:1,1000' => 'Stock must between 1 and 1000',
-            'productCategoryID.required' => 'Category must be selected!',
-
-            // admin:updateProduct
-            'productName.required' => 'A product name is required!',
-            'productName.string' => 'Product name must be a string!',
-            'productPrice.required' => 'Price cannot be empty!',
-            'productPrice.digits_between:0,500000000' => 'Price must between 0 and 500.000.000',
-            'productImage.required' => 'Image link must be filled!',
-            'productStock.required' => 'Stock must be filled!',
-            'productStock.digits_between:1,1000' => 'Stock must between 1 and 1000',
-            'productCategoryID.required' => 'Category must be selected!' // needs workaround 
-        ];
     }
 
     public function updateProduct(Request $request) {
@@ -186,5 +173,36 @@ class adminController extends Controller
             'categoryID' => $request->productCategoryID
         ]);
         return redirect('listProducts');
+    }
+
+    public function messages()
+    {
+        return [
+            // admin:insertProduct
+            'productName.required' => 'A product name is required!',
+            'productName.string' => 'Product name must be a string!',
+            'productPrice.required' => 'Price cannot be empty!',
+            'productPrice.digits_between:0,500000000' => 'Price must between 0 and 500.000.000',
+            'productImage.required' => 'Image link must be filled!',
+            'productStock.required' => 'Stock must be filled!',
+            'productStock.digits_between:1,1000' => 'Stock must between 1 and 1000',
+            'productCategoryID.required' => 'Category must be selected!',
+
+            // admin:updateProduct
+            'productName.required' => 'A product name is required!',
+            'productName.unique' => 'A product name must be unique!',
+            'productName.string' => 'Product name must be a string!',
+            'productPrice.required' => 'Price cannot be empty!',
+            'productPrice.digits_between:0,500000000' => 'Price must between 0 and 500.000.000',
+            'productImage.required' => 'Image link must be filled!',
+            'productStock.required' => 'Stock must be filled!',
+            'productStock.digits_between:1,1000' => 'Stock must between 1 and 1000',
+            'productCategoryID.required' => 'Category must be selected!', // needs workaround 
+
+            // admin:insertCategory
+            'categoryName.unique' => 'Category name must be unique',
+            'categoryName.required' => 'Category name is required',
+            'categoryName.string' => 'Category name must be a string'
+        ];
     }
 }

@@ -59,16 +59,16 @@
                     <div class="col" style="padding-bottom: 24px;">
                         <h4 class="text-left">Insert item</h4>
                         <div class="table-responsive" style="width: 100%;float: left;">
-                        <form action="/listProducts/insert" method="post">
+                        <form action="/listProducts/insert" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th style="padding-left: 0px;">Item Name</th>
                                         <th style="padding-left: 0px;">Item Price</th>
-                                        <th style="padding-left: 0px;">Item Image</th>
                                         <th style="padding-left: 0px;">Item Stock</th>
                                         <th style="padding-left: 0px;">Item Category</th>
+                                        <th style="padding-left: 0px;">Item Image</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -77,15 +77,17 @@
                                     <tr>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productName" value="{{ old('productName') }}" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productPrice" value="{{ old('productPrice') }}" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="text" name="productImage" value="{{ old('productImage') }}" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
                                         <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;"><input type="number" name="productStock" value="{{ old('productStock') }}" style="width: 120px;margin-right: 0px;margin-left: 0px;"></td>
-                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;">
-                                            <select name="productCategoryID" id="0" style="width: 133px;" required> 
+                                        <td style="padding: 0px;padding-right: 0px;padding-left: 0px;padding-top: 0px;width: 133px;">
+                                            <select name="productCategoryID" id="0" style="margin-right : 15px; height : 30px;" required> 
                                                 <option selected value="">Select Category</option>
                                                 @foreach($categories as $c)
                                                     <option value="{{ $c->categoryID }}">{{ $c->categoryName }}</option>
                                                 @endforeach
                                             </select>
+                                        </td>
+                                        <td style="padding: 0px;">
+                                            <input type="file" name="productImage" required>
                                         </td>
                                     </tr>
                                 </tbody>

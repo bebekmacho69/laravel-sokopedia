@@ -39,7 +39,7 @@
 
 
 </head>
-<body style="background: url(&quot;/assets/img/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:110vh; background-attachment:fixed;">
+<body style="background: url(&quot;/assets/img_src/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:110vh; background-attachment:fixed;">
     <div id="app">
     <ul class="nav nav-tabs d-xl-flex justify-content-xl-center" id="NavbarDark" style="background: #f4f4f4;margin-top: 0px;padding-top: 5px;padding-bottom: 5px;border-color: rgb(5,255,0);/*border-top: 1px solid rgb(0,128,255);*/border-bottom-style: solid;/*border-bottom-color: rgb(0,127,255);*/">
         <li class="nav-item"><a class="nav-link" href="/index" style="color: #04bc00;font-size: 16px;">$okopedia</a></li>
