@@ -114,7 +114,7 @@ class adminController extends Controller
     public function insertProduct(Request $request) {
         $validated = $request->validate([
             'productName' => 'required|string|unique:products',
-            'productPrice' => 'integer|required|digits_between:100,500000000',
+            'productPrice' => 'integer|required|digits_between:0,500000000',
             'productImage' => 'file|required|image|mimes:jpeg,png,jpg|max:5120',
             'productStock' => 'integer|required|digits_between:1,1000',
             'productCategoryID' => 'required|not_in:0'

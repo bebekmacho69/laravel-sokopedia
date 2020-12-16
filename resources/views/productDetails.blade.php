@@ -19,7 +19,7 @@
                             <div class="card-body d-xl-flex justify-content-xl-end">
                             @foreach($products as $p)
                                 <div class="col card-img-top scale-on-hover" style="display:flex; align-items:center; justify-content: center;" >
-                                    <img src="/assets/img/{{ $p->productImage }}" alt="Card Image">
+                                    <img src="/assets/img/{{ $p->productImage }}" alt="Card Image" style="width:100%;">
                                 </div>
                                 <div class="col">
                                     <form action="/productDetails/post/toCart2" method="post">
