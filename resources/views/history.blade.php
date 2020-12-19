@@ -7,6 +7,7 @@
                 <h1 style="text-align: center;">Transaction History</h1>
                 <div class="row" style="background: #e6e6e6;padding-top: 0px;padding-bottom: 60px;border-color: #05ff00;">
                     <div class="col">
+                    @if(count($transactions) < 0)
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -27,6 +28,9 @@
                                 </tbody>
                             </table>
                         </div>
+                    @else
+                        <p style="text-align: center;">No transactions made, yet..</p>
+                    @endif
                     </div>
                 </div>
                 <div class="d-xl-flex justify-content-xl-center" style="padding-top: 10px;padding-bottom: 10px;">

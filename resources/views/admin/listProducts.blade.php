@@ -7,6 +7,7 @@
                     <div class="col">
                         <h1 class="text-left">Products</h1>
                         <div class="table-responsive" style="width: 100%;float: left;">
+                        @if(count($products) > 0)
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -38,6 +39,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        @else
+                            <p>No Products.</p>
+                        @endif
                         </div>
                     </div>
                 </div>

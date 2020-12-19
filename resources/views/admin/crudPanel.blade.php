@@ -37,7 +37,6 @@
     <link rel="stylesheet" href="/assets/css/override.css">
 
 
-
 </head>
 <body style="background: url(&quot;/assets/img_src/FtC_The_Wall_Full_Building.png&quot;) no-repeat;background-size: cover; height:110vh; background-attachment:fixed;">
     <div id="app">
@@ -89,6 +88,21 @@
                     <div class="col" style="padding-right: 0px;padding-left: 0px;">
                         <a class="btn btn-primary" type="button" style="padding-right: 12px;" href="/listProducts" >Products<br></a>
                         <a class="btn btn-primary" type="button" style="padding-right: 12px;" href="/listCategory" >Category<br></a>
+                        @if (Request::is('listProducts') or Request::is('byCategory'))
+                        <form action="/byCategory" method="post">
+                        @csrf
+                            <select class="btn btn-primary" name="viewby_categories" id="0" style="margin-top:7px;" required> 
+                                <option selected value="">Select Category</option>
+                                @foreach($categories as $c)
+                                    <option value="{{ $c->categoryName }}">{{ $c->categoryName }}</option>
+                                @endforeach
+                            </select>
+                            <button class="btn btn-primary" type="submit" style="margin-top:7px;">Change</button>
+                        </form>
+                        @endif
+                    </div>
+                    <div class="col" style="padding-right: 0px;padding-left: 0px;">
+   
                     </div>
                     <div class="col" style="padding-right: 17px;padding-left: 0px;">
                     @if ($searchType === 'products')

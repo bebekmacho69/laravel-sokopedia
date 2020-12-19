@@ -5,7 +5,16 @@
     @endisset
     <div class="container" style="margin-bottom: 100%;">
         <div class="row">
-        @foreach($viewProducts as $vP)
+        @if (count($viewProducts) == 0)
+            <div class="col-md-4" style="margin-bottom: 10px; margin-top: 10px;" >
+                <div class="card" style="height: 100%;">
+                    <div class="card-body">
+                        <p>Product not found</p>
+                    </div>
+                </div>
+            </div>
+        @else
+            @foreach($viewProducts as $vP)
                 <div class="col-md-4" style="margin-bottom: 10px; margin-top: 10px;" >
                     <div class="card" style="height: 100%;">
                         <div class="card-body">
@@ -25,6 +34,7 @@
                     </div>
                 </div>
             @endforeach
+        @endif
             </div>
             <div class="d-xl-flex justify-content-xl-center" style="padding-top: 10px;padding-bottom: 10px;">
                     <div class="btn-group d-xl-flex justify-content-xl-center" role="group" style="width: 186px;">

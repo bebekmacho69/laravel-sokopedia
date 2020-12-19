@@ -10,6 +10,7 @@
                         <div class="row">
                             <div class="col d-xl-flex justify-content-xl-center">
                                 <div class="table-responsive text-center" style="width: 100%;">
+                                @if (count($product) > 0)
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -68,6 +69,9 @@
                                         <a class="btn btn-primary" style="float:right; background-color : red;" type="button" href="/cart/clear/">Clear</a>
                                         @endif
                                     </div>
+                                @else
+                                    <p>Cart is empty</p>
+                                @endif
                                 </div>
                             </div>
                         </div>

@@ -31,7 +31,7 @@ class productController extends Controller
         ])
         ->paginate(3);
         return view('indexSearchResult', [
-            'viewProducts' => $products
+            'viewProducts' => $products,
         ]);
     }
 

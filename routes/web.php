@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['admin']], function () {
     Route::get('listProducts', 'adminController@listProducts')->name('admin.products');
+    Route::post('byCategory', 'adminController@listProducts_byCategory')->name('byCategory');
     Route::post('listProducts/search', 'adminController@searchProduct');
     Route::get('listProducts/delete/{id}/','adminController@deleteProduct');
     Route::post('listProducts/insert/','adminController@insertProduct');

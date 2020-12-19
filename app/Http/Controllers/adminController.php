@@ -93,6 +93,27 @@ class adminController extends Controller
         ]);
     }
 
+    public function listProducts_byCategory(Request $request) {
+        $thisProducts = products::join('categories','products.categoryID','=','categories.categoryID')
+        ->select(
+            'products.productID',
+            'products.productName',
+            'products.productDescription',
+            'products.productPrice',
+            'categories.categoryName',
+            'products.productStock',
+            'products.productImage' )
+        ->where('categories.categoryName',$request->viewby_categories)
+        ->paginate(5);
+        $searchType = 'products';
+        $categories = categories::all();
+        return view ('admin.listProducts', [
+            'products' => $thisProducts,
+            'categories' => $categories,
+            'searchType' => $searchType
+        ]);
+    }
+
     public function searchProduct(Request $request) {
         $searchProducts = products::where([
             ['productName', '!=', 'null'],
